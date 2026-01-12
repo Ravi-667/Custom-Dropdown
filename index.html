@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Custom Dropdown Component - Interactive dropdown menu with modern design and accessibility features">
+    <meta name="keywords" content="dropdown, custom select, JavaScript, DOM manipulation, web components">
+    <title>Custom Dropdown Component | Interactive UI Element</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Custom Dropdown Component</h1>
+            <p class="subtitle">Interactive, accessible dropdown menus with premium design</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Dropdown Example 1: Programming Languages -->
+            <section class="demo-section">
+                <h2>Select Your Favorite Language</h2>
+                <div class="dropdown" data-dropdown id="dropdown-languages">
+                    <button 
+                        class="dropdown-trigger" 
+                        data-dropdown-trigger
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        type="button"
+                    >
+                        <span class="dropdown-value" data-dropdown-value>Select a language</span>
+                        <span class="dropdown-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <ul 
+                        class="dropdown-menu" 
+                        data-dropdown-menu
+                        role="listbox"
+                        aria-label="Programming languages"
+                    >
+                        <li class="dropdown-option" role="option" data-value="javascript">
+                            <span class="option-icon">🟨</span>
+                            <span class="option-text">JavaScript</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="python">
+                            <span class="option-icon">🐍</span>
+                            <span class="option-text">Python</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="typescript">
+                            <span class="option-icon">🔷</span>
+                            <span class="option-text">TypeScript</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="java">
+                            <span class="option-icon">☕</span>
+                            <span class="option-text">Java</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="csharp">
+                            <span class="option-icon">💜</span>
+                            <span class="option-text">C#</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="rust">
+                            <span class="option-icon">🦀</span>
+                            <span class="option-text">Rust</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="go">
+                            <span class="option-icon">🐹</span>
+                            <span class="option-text">Go</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Dropdown Example 2: Countries -->
+            <section class="demo-section">
+                <h2>Choose Your Country</h2>
+                <div class="dropdown" data-dropdown id="dropdown-countries">
+                    <button 
+                        class="dropdown-trigger" 
+                        data-dropdown-trigger
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        type="button"
+                    >
+                        <span class="dropdown-value" data-dropdown-value>Select a country</span>
+                        <span class="dropdown-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <ul 
+                        class="dropdown-menu" 
+                        data-dropdown-menu
+                        role="listbox"
+                        aria-label="Countries"
+                    >
+                        <li class="dropdown-option" role="option" data-value="usa">
+                            <span class="option-icon">🇺🇸</span>
+                            <span class="option-text">United States</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="uk">
+                            <span class="option-icon">🇬🇧</span>
+                            <span class="option-text">United Kingdom</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="canada">
+                            <span class="option-icon">🇨🇦</span>
+                            <span class="option-text">Canada</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="india">
+                            <span class="option-icon">🇮🇳</span>
+                            <span class="option-text">India</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="australia">
+                            <span class="option-icon">🇦🇺</span>
+                            <span class="option-text">Australia</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="germany">
+                            <span class="option-icon">🇩🇪</span>
+                            <span class="option-text">Germany</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="japan">
+                            <span class="option-icon">🇯🇵</span>
+                            <span class="option-text">Japan</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Dropdown Example 3: Theme Selection -->
+            <section class="demo-section">
+                <h2>Select Theme</h2>
+                <div class="dropdown" data-dropdown id="dropdown-themes">
+                    <button 
+                        class="dropdown-trigger" 
+                        data-dropdown-trigger
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        type="button"
+                    >
+                        <span class="dropdown-value" data-dropdown-value>Choose theme</span>
+                        <span class="dropdown-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <ul 
+                        class="dropdown-menu" 
+                        data-dropdown-menu
+                        role="listbox"
+                        aria-label="Themes"
+                    >
+                        <li class="dropdown-option" role="option" data-value="light">
+                            <span class="option-icon">☀️</span>
+                            <span class="option-text">Light Mode</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="dark">
+                            <span class="option-icon">🌙</span>
+                            <span class="option-text">Dark Mode</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="auto">
+                            <span class="option-icon">🔄</span>
+                            <span class="option-text">System Default</span>
+                        </li>
+                        <li class="dropdown-option" role="option" data-value="high-contrast">
+                            <span class="option-icon">⚫</span>
+                            <span class="option-text">High Contrast</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Built with HTML, CSS, and JavaScript | Custom Dropdown Component</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
