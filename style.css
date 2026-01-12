@@ -173,8 +173,7 @@ ul {
 }
 
 /* ==========================================
-   DROPDOWN STYLES - Basic Structure
-   (Full styling will be added in Phase 2)
+   DROPDOWN STYLES - Premium Design
    ========================================== */
 .dropdown {
     position: relative;
@@ -182,24 +181,77 @@ ul {
     max-width: 400px;
 }
 
+/* Dropdown Trigger - Default State */
 .dropdown-trigger {
     width: 100%;
-    padding: var(--space-lg);
+    padding: var(--space-lg) var(--space-xl);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--space-md);
-    background: var(--color-surface-light);
+    
+    /* Premium gradient background */
+    background: linear-gradient(135deg, 
+        hsl(240, 15%, 15%) 0%, 
+        hsl(240, 12%, 18%) 100%);
+    
+    /* Layered borders for depth */
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
+    
+    /* Multi-layer shadow for depth */
+    box-shadow: 
+        var(--shadow-md),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    
     color: var(--color-text-primary);
     font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    
+    /* Smooth transitions */
     transition: all var(--transition-base);
+    
+    /* Ensure proper sizing for touch devices */
+    min-height: 48px;
+}
+
+/* Hover State - Subtle lift effect */
+.dropdown-trigger:hover {
+    border-color: var(--color-border-light);
+    box-shadow: 
+        var(--shadow-lg),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 0 0 3px rgba(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.1);
+    transform: translateY(-1px);
+}
+
+/* Focus State - Accessibility */
+.dropdown-trigger:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 
+        var(--shadow-lg),
+        0 0 0 3px rgba(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.3);
+}
+
+/* Active/Pressed State */
+.dropdown-trigger:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
 }
 
 .dropdown-value {
     flex: 1;
     text-align: left;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+/* Placeholder styling */
+.dropdown-value.is-placeholder {
+    color: var(--color-text-muted);
+    font-style: italic;
 }
 
 .dropdown-icon {
@@ -208,42 +260,213 @@ ul {
     justify-content: center;
     transition: transform var(--transition-base);
     color: var(--color-text-secondary);
+    opacity: 0.8;
 }
 
+/* Rotate icon when dropdown is open */
+.dropdown.is-open .dropdown-icon {
+    transform: rotate(180deg);
+    color: var(--color-primary);
+    opacity: 1;
+}
+
+/* Open state border highlight */
+.dropdown.is-open .dropdown-trigger {
+    border-color: var(--color-primary);
+    box-shadow: 
+        var(--shadow-lg),
+        0 0 0 3px rgba(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2);
+}
+
+/* Dropdown Menu - Hidden by default */
 .dropdown-menu {
     position: absolute;
-    top: calc(100% + var(--space-sm));
+    top: calc(100% + var(--space-md));
     left: 0;
     right: 0;
-    background: var(--color-surface-light);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    max-height: 300px;
+    
+    /* Glassmorphism effect */
+    background: rgba(var(--color-primary-h), 12%, 18%, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* Premium border with gradient */
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    
+    /* Shadow for elevation */
+    box-shadow: var(--shadow-xl);
+    
+    /* Scrolling for long lists */
+    max-height: 320px;
     overflow-y: auto;
+    overflow-x: hidden;
+    
+    /* Layering */
     z-index: var(--z-dropdown);
+    
+    /* Hidden by default */
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(0.95);
+    
+    /* Smooth animations */
     transition: all var(--transition-base);
+    
+    /* Custom scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
 }
 
+/* Custom scrollbar for webkit browsers */
+.dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 3px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-border-light);
+}
+
+/* Show dropdown menu when open */
+.dropdown.is-open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* Dropdown Options */
 .dropdown-option {
-    padding: var(--space-md) var(--space-lg);
+    padding: var(--space-md) var(--space-xl);
     display: flex;
     align-items: center;
     gap: var(--space-md);
     cursor: pointer;
-    transition: all var(--transition-fast);
     color: var(--color-text-primary);
+    font-size: var(--font-size-base);
+    
+    /* Smooth transitions */
+    transition: all var(--transition-fast);
+    
+    /* Ensure proper touch target */
+    min-height: 44px;
+    
+    /* Position for hover effect */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover gradient effect */
+.dropdown-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        rgba(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.1) 0%,
+        rgba(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.05) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    z-index: -1;
+}
+
+/* Hover state */
+.dropdown-option:hover {
+    background: rgba(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.1);
+    color: var(--color-text-primary);
+    transform: translateX(4px);
+}
+
+.dropdown-option:hover::before {
+    opacity: 1;
+}
+
+/* Focus state for keyboard navigation */
+.dropdown-option:focus,
+.dropdown-option.is-focused {
+    outline: none;
+    background: rgba(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.15);
+    transform: translateX(4px);
+}
+
+/* Active/Selected state */
+.dropdown-option.is-selected {
+    background: linear-gradient(90deg, 
+        rgba(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2) 0%,
+        rgba(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.1) 100%);
+    color: var(--color-primary-light);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Selected indicator */
+.dropdown-option.is-selected::after {
+    content: '✓';
+    margin-left: auto;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    animation: checkmark-pop 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes checkmark-pop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .option-icon {
     font-size: var(--font-size-lg);
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+}
+
+.dropdown-option:hover .option-icon {
+    transform: scale(1.1);
 }
 
 .option-text {
     flex: 1;
+}
+
+/* Stagger animation for dropdown items */
+.dropdown.is-open .dropdown-option {
+    animation: slide-in-fade 0.3s ease-out backwards;
+}
+
+.dropdown.is-open .dropdown-option:nth-child(1) { animation-delay: 0.05s; }
+.dropdown.is-open .dropdown-option:nth-child(2) { animation-delay: 0.08s; }
+.dropdown.is-open .dropdown-option:nth-child(3) { animation-delay: 0.11s; }
+.dropdown.is-open .dropdown-option:nth-child(4) { animation-delay: 0.14s; }
+.dropdown.is-open .dropdown-option:nth-child(5) { animation-delay: 0.17s; }
+.dropdown.is-open .dropdown-option:nth-child(6) { animation-delay: 0.20s; }
+.dropdown.is-open .dropdown-option:nth-child(7) { animation-delay: 0.23s; }
+
+@keyframes slide-in-fade {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* ==========================================
